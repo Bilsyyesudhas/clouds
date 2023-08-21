@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "715067470333",
+    "project_id": "capecloud-b64b1",
+    "storage_bucket": "capecloud-b64b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715067470333:android:9578d64c73d366f8eb2994",
+        "android_client_info": {
+          "package_name": "com.capeclouds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715067470333-2iljh19u2fs2rpj7svt90a6psaub6dq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpheVM-dOtTnowH91In-mTU-_OA3fZtf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715067470333-2iljh19u2fs2rpj7svt90a6psaub6dq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "715067470333-1pc5vo0p966gg6pfosrclefdlu8qtsn1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.techie.myapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
