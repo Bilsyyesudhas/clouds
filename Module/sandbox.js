@@ -24,19 +24,22 @@ import {Banner} from './Banner';
 import {data} from './SliderData';
 import Cart from './Cart';
 import React, {useState, useEffect} from 'react';
+import MyTab from './MyTab';
+
 const {width} = Dimensions.get('window');
+
 export const Sandbox = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState([]);
+  const [value, setValue] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:7098/api/get-catogery').then(response => {
-      if (response.data.length > 0) {
-        console.log(response.data);
-        setData(response.data);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:7098/api/get-catogery').then(response => {
+  //     if (response.data.length > 0) {
+  //       console.log(response.data);
+  //       setValue(response.data);
+  //     }
+  //   });
+  // }, []);
 
   const handleImagePress = () => {
     navigation.navigate('painting');
@@ -166,18 +169,13 @@ export const Sandbox = ({navigation}) => {
             flexDirection: 'row',
             backgroundColor: 'blue',
             width: '110%',
-            paddingVertical: 20,
+            paddingVertical: 15,
             paddingHorizontal: 20,
             justifyContent: 'center',
             alignItems: 'center',
             marginLeft: -15,
           }}>
-          <Ionicons
-            name="list-sharp"
-            size={20}
-            color={'red'}
-            style={{paddingLeft: 10}}
-          />
+          
           <Text style={{paddingLeft: 100, fontWeight: 'bold', color: '#fff'}}>
             CAPE CLOUDS
           </Text>
@@ -202,7 +200,8 @@ export const Sandbox = ({navigation}) => {
 
         <Cart navigation={navigation} />
 
-        <View style={{marginTop: 40}}>
+        <View style={{marginTop: 5,
+        }}>
           <FlatList
             data={data} //my data
             horizontal
@@ -319,6 +318,7 @@ export const Sandbox = ({navigation}) => {
           </View>
         </Modal>
       </ScrollView>
+     
     </SafeAreaView>
   );
 };

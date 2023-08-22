@@ -1,104 +1,11 @@
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-// import React, { useState } from 'react';
-// import { Text, View, Modal, TouchableOpacity } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { Sandbox } from './Module/sandbox';
-// import Service from './Module/Service';
-// import Servicerequest from './Module/Servicerequest';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import Painting from './Module/painiting';
-// import Loginpage from './Module/Loginpage';
-// import Catagory from './Module/Catagory';
 
-// const Stack = createStackNavigator();
-// const Tab = createBottomTabNavigator();
-
-// export default function App() {
-
-//   const [showModal, setShowModal] = useState(false)
-
-//   return (
-//     <>
-//       <NavigationContainer>
-//         <Tab.Navigator
-
-//           screenOptions={({ route }) => ({
-//             tabBarIcon: ({ focused, color, size }) => {
-//               let iconName;
-
-//               if (route.name === 'Home') {
-//                 iconName = focused
-//                   ? 'home'
-//                   : 'home';
-//               } else if (route.name === 'Login') {
-//                 iconName = focused ? 'lock-open' : 'lock-open';
-//               }
-//               else if (route.name === 'Service') {
-//                 iconName = focused ? 'ios-list' : 'ios-list-outline';
-//               }
-
-//               // You can return any component that you like here!
-//               // return  <Ionicons name={iconName} size={size}
-//               // color={color} />
-//               return <Ionicons name={iconName} size={20} />
-//                 ;
-//             },
-//             tabBarActiveTintColor: 'tomato',
-//             tabBarInactiveTintColor: 'gray',
-//           })}
-//         >
-
-//           <Tab.Screen name="Home" component={Sandbox} options={{
-//             headerTitle: () => (
-//               <View style={{
-//                 flexDirection: 'row', backgroundColor: 'blue', width: '110%', paddingVertical: 20,
-//                 paddingHorizontal: 20, justifyContent: 'center', alignItems: 'center', marginLeft: -15
-//               }}>
-//                 <Text style={{ paddingLeft: 100, fontWeight: 'bold', color: '#fff' }}>CAPE CLOUD</Text>
-//                 <Ionicons name="person" size={20} color={"red"} style={{ paddingLeft: 150 }} onPress={() => setShowModal(true)} />
-//               </View>
-//             ),
-//           }} />
-//           <Tab.Screen name="Login" component={Loginpage} />
-//           <Tab.Screen name="Service" component={Service} />
-
-//         </Tab.Navigator>
-//       </NavigationContainer>
-//       <Modal
-//         visible={showModal}
-//         onRequestClose={() => setShowModal(false)}
-//         transparent
-//       >
-//         <View style={{ borderRadius: 10, backgroundColor: '#F5F5F5', height: 100, width: 350, marginTop: 55, justifyContent: 'center', flexDirection: 'column', alignItems: "center", marginHorizontal: 20 }}>
-
-//           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, width: 350 }}>
-//             <TouchableOpacity style={{ width: 350, paddingTop: 30, flexDirection: 'row', paddingBottom: 10 }} >
-//               <Icon name='user' size={20} style={{ paddingHorizontal: 5 }} />
-//               <Text style={{ textAlign: 'left', }}>Profile</Text>
-//             </TouchableOpacity>
-//           </View>
-//           <View>
-//             <TouchableOpacity style={{ width: 350, paddingTop: 30, flexDirection: 'row', paddingBottom: 10 }}>
-//               <Icon name='user' size={20} style={{ paddingHorizontal: 5 }} />
-//               <Text style={{ textAlign: 'left', }}>logout</Text>
-//             </TouchableOpacity>
-//           </View>
-
-//         </View>
-//       </Modal>
-
-//     </>
-//   );
-// }
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Sandbox} from './Module/sandbox';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Painting from './Module/painiting';
 import React, {useContext, useState, useEffect} from 'react';
 import {Text, View, Modal, TouchableOpacity} from 'react-native';
@@ -135,8 +42,13 @@ import FirstPage from './Module/FirstPage';
 
 import Slider from './Module/Slider';
 import Cart from './Module/Cart';
-// import {Profile} from './Module/Profile';
+
 import {Profile} from './Module/Profile'
+import { Sandbox } from './Module/sandbox';
+
+import SmartHistory from './Module/SmartHistory';
+import { MyTab } from './Module/MyTab';
+
 
 
 const App = () => {
@@ -198,12 +110,46 @@ const App = () => {
   // };
 
   const Stack = createStackNavigator();
+  const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
-      
       <Stack.Navigator initialRouteName='first'>
         {user ? (
           <>
+         <Stack.Screen name='home'  options={{
+                headerShown: false,
+              }}>
+            {() => (
+              <Tab.Navigator>
+                   <Tab.Screen
+                  name='Catagories'
+                  component={Sandbox}
+                  options={{
+                    headerShown: false,
+                    tabBarLabel: 'Catagories',
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name='menu' color={color} size={size} />
+                    ),
+                  }}
+                />
+               <Tab.Screen name='Service Request' component={Sliderstack}   options={{
+                    headerShown: false,
+                    tabBarLabel: 'Service Request',
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name='push' color={color} size={size} />
+                    ),
+                  }} />
+                 <Tab.Screen name='AgroSmart Request' component={SmartHistory}   options={{
+                    headerShown: false,
+                    tabBarLabel: 'AgroSmart Request',
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons name='enter' color={color} size={size} />
+                    ),
+                  }} /> 
+                {/* Add more tab screens as needed */}
+              </Tab.Navigator>
+            )}
+          </Stack.Screen>
             <Stack.Screen
               name="Home"
               component={Sandbox}
@@ -211,7 +157,7 @@ const App = () => {
                 headerShown: false,
               }}
             />
-               {/* <Stack.Screen name="profile" component={Profile} /> */}
+               <Stack.Screen name="profile" component={Profile} />
           
             <Stack.Screen name="Service" component={Service} />
             <Stack.Screen name="painting" component={Painting} />
@@ -233,6 +179,8 @@ const App = () => {
             <Stack.Screen name="Servicerequest" component={Servicerequest} />
             <Stack.Screen name="Agro Smart" component={Agro} />
             <Stack.Screen name="Happy Home" component={Slider} />
+        
+
            
             {/* <Stack.Screen name="Sliderstack" component={Sliderstack}
            options={{headerShown:(false),}}/> */}
@@ -250,6 +198,8 @@ const App = () => {
           </>
         )}
       </Stack.Navigator>
+
+
     </NavigationContainer>
   );
 };

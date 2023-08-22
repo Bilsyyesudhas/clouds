@@ -68,11 +68,18 @@
 import {View, Text, Image, Modal, Button, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import EditProfile from './EditProfile';
-const Profile = () => {
+import Changepassword from './Change password';
+export const Profile = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isChangePasswordVisible, setIsChangePasswordVisible] = useState(false);
+ 
   const handleOk = () => {
     setIsVisible(false);
   };
+
+  const handlepasswordok = () =>{
+    setIsChangePasswordVisible(false);
+  }
 
   return (
     <View>
@@ -121,7 +128,7 @@ const Profile = () => {
           <Button
             title="Change password"
             style={{backgroundColor: 'green', color: 'white'}}
-            onPress={() => setIsVisible(true)}
+            onPress={() => setIsChangePasswordVisible(true)}
           />
         </View>
    
@@ -130,6 +137,14 @@ const Profile = () => {
         animationType="slide"
         onRequestClose={() => setIsVisible(false)}>
         <EditProfile handleOk={handleOk}/>
+       
+      </Modal>
+       <Modal
+        visible={isChangePasswordVisible}
+        animationType="slide"
+        onRequestClose={() => setIsChangePasswordVisible(false)}>
+        <Changepassword handlepasswordOk={handlepasswordok}/>
+       
       </Modal>
     </View>
   );
@@ -178,4 +193,4 @@ const styles = StyleSheet.create({
    
   },
 });
-export default Profile;
+

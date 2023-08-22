@@ -14,7 +14,7 @@ const EditProfile = ({handleOk}) => {
       style={{
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+      
         margin: '20px',
       }}>
       <View style={{backgroundColor: 'white', padding: 20}}>
@@ -146,12 +146,13 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 10,
     fontSize: 14,
-    height: 60, // Adjust the height as needed
+    height: 100, // Adjust the height as needed
   },
   buttonContainer: {
     width: '100%',
-    paddingHorizontal: 20,
-    paddingVertical: 5,
+
+    paddingVertical: 10,
+    textAlign:"right"
   },
 
 });
