@@ -25,21 +25,24 @@ import {data} from './SliderData';
 import Cart from './Cart';
 import React, {useState, useEffect} from 'react';
 import MyTab from './MyTab';
-
+import axios from 'axios'; // Import axios here
 const {width} = Dimensions.get('window');
 
 export const Sandbox = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
   const [value, setValue] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:7098/api/get-catogery').then(response => {
-  //     if (response.data.length > 0) {
-  //       console.log(response.data);
-  //       setValue(response.data);
-  //     }
-  //   });
-  // }, []);
+
+  useEffect(() => {
+    axios.get('http://localhost:7098/api/get-catogery').then(response => {
+      if (response.data.length > 0) {
+ console.log(response.data);
+        setValue(response.data);
+      }
+    }).catch(
+      error => {console.log(error)}
+    )
+  }, []);
 
   const handleImagePress = () => {
     navigation.navigate('painting');
@@ -198,7 +201,7 @@ export const Sandbox = ({navigation}) => {
           Categories
         </Text>
 
-        <Cart navigation={navigation} />
+        <Cart value={value} navigation={navigation} />
 
         <View style={{marginTop: 5,
         }}>

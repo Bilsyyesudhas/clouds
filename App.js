@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Painting from './Module/painiting';
 import React, {useContext, useState, useEffect} from 'react';
 import {Text, View, Modal, TouchableOpacity} from 'react-native';
-
+import { ViewPropTypes } from 'deprecated-react-native-prop-types'
 import Homecleaning from './Module/Stack/Homecleaning';
 import Electrician from './Module/Stack/Electrician';
 import Tv from './Module/Stack/Tv';

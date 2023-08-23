@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Cart = ({ navigation }) => {
+const Cart = ({ navigation,value }) => {
   const array = [
+    
     {
       key: '1',
       titleImageSource: require('./Image/ac.jpg'),
@@ -157,18 +158,18 @@ const columnsPerRow = 3;
 
   return (
     <View style={styles.container}>
-      {array.map(element => (
+      {value.map(element => (
         <TouchableOpacity
-          key={element.key}
+          key={element._id}
           style={styles.column}
-          onPress={() => handleImagePress(element.key)}
+          // onPress={() => handleImagePress(element.orderNo)}
         >
-          {element.titleImageSource ? (
-            <Image source={element.titleImageSource} style={styles.image} />
+          {element.photo ? (
+            <Image source={`http://localhost:7098/images/${element.photo}`} style={styles.image} />
           ) : (
             <View style={styles.emptyImage} />
           )}
-          <Text style={styles.text}>{element.subtitle}</Text>
+          <Text style={styles.text}>{element.name}</Text>
         </TouchableOpacity>
       ))}
     </View>
